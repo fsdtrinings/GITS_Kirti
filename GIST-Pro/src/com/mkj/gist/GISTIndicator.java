@@ -26,11 +26,14 @@ public class GISTIndicator {
 
 	public static List<StockResponseDTO> stockDayWiseFinalData = new ArrayList<StockResponseDTO>();
 	
-	static String symbolName = "havells";
+	static String symbolName = "HAVELLS";
 	public static void main(String[] args) {
-
+		
+		
 		
 		GISTIndicator gist = new GISTIndicator();
+		//gist.symbolName = args[0];
+		
 		Map<Integer, Stock> dataMap = new TreeMap<>();
 
 		try {
@@ -158,6 +161,10 @@ public class GISTIndicator {
 			
 			
 			PrintWriter pw = new PrintWriter(new FileWriter(new File(file)));
+			
+			pw.print("Date,Symbol,Price,RSI,SIGNAL,Open,Close,High,Low");
+			pw.print("\n");
+			
 			
 			for (Map.Entry<Integer, Stock> entry : StockMapDAOImpl.dayWisedataMap.entrySet()) {
 				
